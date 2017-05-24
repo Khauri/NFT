@@ -1,0 +1,17 @@
+{
+  "name": "nft",
+  "version": "1.0.0",
+  "description": "notational filetype ",
+  "main": "nft-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "bin" : {
+    "nftc" : "nft-cli.js"
+  }
+}

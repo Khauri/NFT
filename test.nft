@@ -1,0 +1,11 @@
+# Meta { title = 'Hello - Adele', key = 'C', hiderests = true, transpose = 1}
+# Voice { sig='4/4' }
+
+# Piano { sig='4/4' }
+##{ clef='treble' }
+
+##{clef='bass'}
+[Intro]
+Emin  Gmaj  Dmaj  Cmaj
+Emin  Gmaj  Dmaj  Cmaj
+Emin  Gmaj  Dmaj  Cmaj
