@@ -1,5 +1,5 @@
 # Notation Filetype (.nft)
-.nft (Pronounced "Nifty") is a user interface markup language for musical notation.  
+.nft (Pronounced "Nifty") is a markup language for musical notation.  
 The idea is to create a format that translates simple music notation in the form of plain text (i.e. the kind of stuff you see on GuitarTabs.com) into computer-readable and translatable music notation.
 This format allows a user to quickly write sheet music using any text editor without having formal knowledge of music symbols.  
 Because of the loose method in which .nft is defined, you could also theoretically copy-paste a file from a music website and hopefully get a nice editable template for music.
