@@ -1,3 +1,3 @@
-import { parse } from './src'
+import NFT from './src'
 
-parse("{C#5,B,D} Emin  Gmaj  Dmaj  Cmaj")
+NFT.parseText("3*{C#5,B,D}/3 EMin;  GMaj  DMaj/5  Cmaj")

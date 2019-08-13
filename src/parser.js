@@ -1,4 +1,5 @@
 import { CHORD_TYPES } from './constants'
+import tokenize from './tokenizer'
 
 function retrieveChordType(type){
   let typeValue
@@ -6,6 +7,31 @@ function retrieveChordType(type){
     throw `Could not recognize chord type: ${type}`
   }
   return typeValue
+}
+
+/**
+ * Match a literal string
+ * @param {String} literal 
+ */
+const parseLiteral = (literal) => (input) => {
+  const {tokens, position, original, consume, peek} = input
+  return {
+
+  }
+}
+/**
+ * Matches a regex pattern
+ * @param {RegExp} pattern 
+ */
+const parsePattern = (pattern) => (input) => {
+  const [tokens, position] = input 
+}
+
+const parseEither = (parser1, parser2) => (input) => parser1(input) || parser2(input)
+
+export function parse2(input){
+  const tokens = tokenize(input)
+  console.log(tokens)
 }
 /**
  * grammar:
