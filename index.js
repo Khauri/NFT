@@ -1,3 +1,9 @@
 import NFT from './src'
 
-NFT.parseText("3*{C#5,B,D}/3 EMin;  GMaj  DMaj/5  Cmaj")
+NFT.parseText(
+`
+Em G/5      D {C#7,C4Maj7}/63
+Hello,  it's me
+       Em          G                D
+I was wondering if after all these years
+`)
