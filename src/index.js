@@ -1,4 +1,4 @@
-import { parse2 as parse } from './parser'
+import parser from './NFT_Parser'
 
 class Note {
   constructor(){}
@@ -14,6 +14,9 @@ class Chord {
     this.staff = null
     this.notes = []
     this.duration = 1
+  }
+  static fromNotes(notes){
+
   }
 }
 
@@ -74,9 +77,22 @@ class Composition {
 export default new class {
   /** 
    * Parse String -> JSON -> Composition
+   * @param {String} text
    */
   parseText(text){
-    return this.parseJSON(parse(text))
+    // const lines = text.split('\n')
+    // let stream
+    // while(lines.length){
+    //   stream = parser.feed(lines.shift())
+    //   console.log(stream)
+    // }
+    // return stream
+    text = text.trim() + '\n' // ensure file ends with newline
+    let result = parser.feed(text).finish()
+    if(result.length > 1){
+      console.log(result.length)
+    }
+    return this.parseJSON(result)
   }
   /**
    * parse JSON string/obj -> Composition
