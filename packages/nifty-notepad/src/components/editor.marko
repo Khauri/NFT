@@ -1,0 +1,21 @@
+<coder/coder />
+
+<div.editor 
+  contenteditable="true" 
+  onBeforeInput(e: InputEvent) {
+    // Need to implement all this shit: https://w3c.github.io/input-events/#interface-InputEvent-Attributes
+    // But let's start with insertText, insertParagraph, insertFromPaste, deleteByCut, deleteContentBackward, deleteContentForward, historyUndo, historyRedo
+    coder().fromBeforeInputEvent(e);
+  }
+>
+ <nifty code=coder().code />
+</div>
+
+<style>
+  .editor {
+    padding: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+</style>

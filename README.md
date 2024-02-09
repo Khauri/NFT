@@ -1,39 +1,78 @@
 # Notation Filetype (.nft)
-.nft (Pronounced "Nifty") is a markup language for musical notation.  
-The idea is to create a format that translates simple music notation in the form of plain text (i.e. the kind of stuff you see on GuitarTabs.com) into computer-readable and translatable music notation.
-This format allows a user to quickly write sheet music using any text editor without having formal knowledge of music symbols.  
-Because of the loose method in which .nft is defined, you could also theoretically copy-paste a file from a music website and hopefully get a nice editable template for music.
+
+.nft (Pronounced "Nifty") is a markup language for musical notation.
+
+> Note: I created this project long before NFTs became an awful internet sensation
+
+This is just a fun project that's not meant to be taken seriously. I initially created it in order to save and modify stuff from chord catalog websites
+
+The project translates simple music notation in the form of plain text (i.e. the kind of stuff you see on GuitarTabs.com) into computer-readable and translatable music notation. This can then be turned into a MIDI file or 
+
+This format allows a user to quickly write sheet music using any text editor without having formal knowledge of music symbols.
+
+Included in this repository is a special "notepad" application that I plan to enhance with visualizations
 
 ## Documentation
-The .nft format is html-like with only one special tag: meta (case insensitive).  
-The meta tag specifies settings, variables, and other information for the entire score
-Any other tag is assumed to be a group of however many subtags there are. *Note tags may only be nested with a depth of 1*  
+
+The .nft format is a plain-text markup format.
 
 ### Metadata
-All files start with a metadata section.  
+
+Metadata is used to define tracks (e.g. instruments) along with staves (treble and bass clef) as well as.
+Metadata is arbitrary but 
 
 ### Single Notes
-Write a single note by simply writing C, D, E, F, G, A, or B  
+
+A note is simply any letter, A - F
+
 A 'b' following a note will lower it by one semitone. Ex: Db  
 A '#' following a note will raise it by one semitone. Ex: D#  
 
 ### Chords  
-The first way to define a chord is to write a note and follow it with a chord name  
-ex: Dmaj = D major  
-Possible chord names are:  
+
+The first way to define a chord is to write a note and optionally follow it with a chord name 
+
+ex: D = Dmaj = D major  
+
+Some possible chord names are:  
+
 maj - Major  
 maj7 - Major 7th  
 min - Minor  
-min7 - Minor 7th  
+min7 - Minor 7th
+dim - diminished
 
-The 2nd way is to enclose a group of notes in square or curly braces separated by commas  
+The second way to generate chords is to enclose a group of notes in square or curly braces separated by commas  
 ex: {E,G,B}  
 ex: [E,G,B]  
 
+By default if you write a letter and do not follow it with 
+
+### Length
+
+Any note or chord can have its length changed by by appending or prepending `.` to it.
+
+Each dot prepending to a note or chord will halve the original length of the note
+
+Each dot appended will extend the value of the note by two
+
+..Db = D flat half note
+C#.. = C sharp 
+
 ### Rests
-A rest is specified by R
+
+A rest is specified by a using three dots
+
+A single dot represents a whole rest. Each additional dot reduces the rest by half.
+
+If you need multiple whole rests, use two dot groups separated by a space
+
+```
+Emin  Gmaj  ...  Cmaj
+```
 
 ### Other symbols
+
 There are various other symbols available.  
 A full list of them will be available soon.
 
@@ -68,24 +107,43 @@ Options/Parameters are inherited from the parent with a few exceptions.
 Sometimes you want to add lyrics to your score.
 
 ## Format
-Spaces are only used to separate notes, chords, etc.  
-Newline characters, tabs, do not matter.  
-If you wanted to, you could put an entire song on one line. It would look ugly, but we're not here to tell you hot to run your life...don't do it though.
 
+Spaces are only used to separate notes, chords, etc. 
+
+Newlines are used to separate directives
 ## Examples
-This example shows 
-```markdown
-# Meta { title = 'Hello - Adele', key = 'C', hiderests = true, transpose = 0 }
-# Voice { sig='4/4' }
 
-# Piano { sig='4/4' }
-## { clef='treble' }
-## {clef='bass'}
+Do note that the spacing between lyrics is to ensure 
+
+```markdown
+# Hello - Adele
+
+# Voice { sig = 4/4 }
+
+# Piano { sig = 4/4 }
+## { clef = treble }
+## { clef = bass }
+
+Hello - Adele
+
 [Intro]
-Emin  Gmaj  Dmaj  Cmaj
-Emin  Gmaj  Dmaj  Cmaj
-Emin  Gmaj  Dmaj  Cmaj
+Emin  Gmaj  Dmaj  Cmaj x 4
+
+[Verse]
+   Em  G/D       D C
+Hello,   it's me
+       Em         G/D              D                 C          Em  G/D   D    C
+I was wondering if after all these years you'd like to meet, to go over everything
+               Em             G/D                     D         C
+They say that time's supposed to heal you, but I ain't done much healing.
+  Em G/D       D    C
+Hello, can you hear me?
+       Em        G/D             D         C                  Em    G/D  D   C
+I'm in California dreaming about who we used to be when we were younger and free.
+         Em        G/D                D            C
+I've forgotten how it felt before the world fell at our feet.
 ```
+
 The parse tree, in JSON format, looks like this:
 ```js
 {

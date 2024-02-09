@@ -1,0 +1,17 @@
+import {Coder} from './coder';
+
+<let/coder = (() => null) />
+
+<lifecycle
+  onMount() {
+    const instance = this.instance = new Coder(() => {
+      coder = () => instance;
+    });
+    coder = () => instance;
+  }
+  onDestroy() {
+    this.instance.destroy();
+  }
+/>
+
+<return<(() => Coder | null)> = coder />

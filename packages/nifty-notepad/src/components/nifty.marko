@@ -1,0 +1,18 @@
+import {parse} from '@nifty/core';
+
+<attrs/{code} />
+
+<const/parsed = (() => {
+  if(!code) {
+    return {};
+  }
+  const ast = parse(code);
+  console.log(ast);
+  return ast;
+})() />
+
+<if=parsed?.success>
+  <span></span>
+</if>
+
+<pre>${parsed?.remaining}</pre>
